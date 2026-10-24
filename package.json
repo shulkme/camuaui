@@ -1,6 +1,6 @@
 {
   "name": "camuaui",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Copy Camua UI React components, themes and optional examples into your own project.",
   "type": "module",
   "bin": {
