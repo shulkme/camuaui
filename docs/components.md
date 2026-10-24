@@ -600,6 +600,6 @@ function EmptyProjects({ onCreate }: { onCreate: () => void }) {
 }
 ```
 
-所有区域按需组合，可省略标题、图标、操作或 extra。EmptyActions 支持多个按钮与窄屏换行；EmptyExtra 是独立的底部扩展区，默认带浅分隔线，可放帮助说明、模板入口或其它自定义内容。各部件转发 ref、原生属性与 className；图标默认仅装饰，信息通过标题和描述表达。不内置按钮行为、请求或路由，显示时机由业务根据数据决定。嵌入已有卡片时可用 `className="bg-background"` 或 `bg-transparent` 调整背景；放入 List 时使用 ListItem 包裹，保持 ul/li 语义。
+所有区域按需组合，可省略标题、图标、操作或 extra。EmptyTitle 默认使用 font-semibold。EmptyActions 支持多个按钮与窄屏换行；EmptyExtra 是独立的底部扩展区，无分隔线，与上方按钮默认间距为 12px，可放帮助说明、模板入口或其它自定义内容。各部件转发 ref、原生属性与 className；图标默认仅装饰，信息通过标题和描述表达。不内置按钮行为、请求或路由，显示时机由业务根据数据决定。嵌入已有卡片时可用 `className="bg-background"` 或 `bg-transparent` 调整背景；放入 List 时使用 ListItem 包裹，保持 ul/li 语义。
 
 可选 DesignSystem 的独立 Empty 卡片提供创建项目、展开模板及筛选无结果示例；List 清空所有会话后也使用 Empty，并可恢复示例数据。

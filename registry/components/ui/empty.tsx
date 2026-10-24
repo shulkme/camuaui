@@ -47,7 +47,7 @@ export const EmptyIcon = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
 export const EmptyTitle = forwardRef<HTMLHeadingElement, ComponentProps<"h3">>(
   function EmptyTitle({ className, ...props }, ref) {
-    return <h3 ref={ref} {...props} className={cn("text-base font-medium text-primary", className)} />;
+    return <h3 ref={ref} {...props} className={cn("text-base font-semibold text-primary", className)} />;
   },
 );
 
@@ -76,7 +76,7 @@ export const EmptyExtra = forwardRef<HTMLDivElement, ComponentProps<"div">>(
         ref={ref}
         {...props}
         className={cn(
-          "flex w-full flex-col items-center gap-3 border-t border-divider pt-6 text-label text-tertiary",
+          "-mt-3 flex w-full flex-col items-center gap-3 text-label text-tertiary",
           className,
         )}
       />
