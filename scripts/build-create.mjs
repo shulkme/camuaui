@@ -1,10 +1,4 @@
-import { readFile, writeFile, copyFile } from "node:fs/promises";
+import { copyFile } from "node:fs/promises";
 const root = new URL("../", import.meta.url);
-const pkg = JSON.parse(await readFile(new URL("package.json", root), "utf8"));
-const file = new URL("packages/create-camuaui/package.json", root);
-const creator = JSON.parse(await readFile(file, "utf8"));
-creator.version = pkg.version;
-creator.dependencies.camuaui = pkg.version;
-await writeFile(file, `${JSON.stringify(creator, null, 2)}\n`);
 await copyFile(new URL("LICENSE", root), new URL("packages/create-camuaui/LICENSE", root));
-console.log(`create-camuaui: ${pkg.version}, requires camuaui@${pkg.version}`);
+console.log("create-camuaui: stable launcher for camuaui@latest (independent version)");

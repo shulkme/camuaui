@@ -22,10 +22,9 @@ try {
   npm(["run", "registry:build"]);
   npm(["run", "creator:build"]);
   npm(["pack", "--pack-destination", "."]);
-  npm(["pack", "./packages/create-camuaui", "--pack-destination", "."]);
   const pkg = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"));
-  run("git", ["add", "package.json", "package-lock.json", "packages/create-camuaui/package.json", "packages/create-camuaui/LICENSE", "registry/registry.json"]);
+  run("git", ["add", "package.json", "package-lock.json", "registry/registry.json"]);
   run("git", ["commit", "-m", `Release v${pkg.version}`]);
   run("git", ["push", "origin", "main"]);
-  console.log(`Source pushed. GitHub Actions will check and publish both packages at ${pkg.version}.`);
+  console.log(`Source pushed. GitHub Actions will check and publish camuaui@${pkg.version}. The stable create-camuaui launcher is not republished.`);
 } catch (error) { console.error(error.message); process.exitCode = 1; }

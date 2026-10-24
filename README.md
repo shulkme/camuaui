@@ -26,7 +26,7 @@ npm create camuaui@latest . -- --framework vite --yes
 
 `--yes` 跳过交互，新项目默认 Vite、TypeScript 和示例首页。`--dry-run` 只展示计划，不创建目录、不执行框架脚本、不安装依赖；`--skip-install` 仅生成源码，之后需自行安装依赖。框架创建失败时保留目录以便检查，不自动删除。项目已创建但 UI 安装失败时可使用下面的组件安装命令重试，并按 Provider 章节接入首页。
 
-新项目入口由 `create-camuaui` 提供（npm create 自动解析），组件安装和更新由 `camuaui` 提供；两者共用同一套组件源码。
+`create-camuaui` 仅是 npm create 解析所需的稳定入口，每次通过 npm 获取最新版 `camuaui` 并执行主包的 `create-camuaui` 命令别名。CLI、组件和示例都只在主包中维护；入口包不绑定主包版本，后续正常更新只需发布 `camuaui`。
 
 ## 在已有项目中安装与更新
 

@@ -1,7 +1,7 @@
 {
   "name": "create-camuaui",
-  "version": "0.2.3",
-  "description": "Create a Next.js or Vite React application with Camua UI, or install into an existing project.",
+  "version": "0.1.0",
+  "description": "Stable npm create launcher forwarding to the latest Camua UI CLI.",
   "type": "module",
   "bin": {
     "create-camuaui": "./bin/create-camuaui.js"
@@ -15,7 +15,7 @@
     "node": ">=20.19.0"
   },
   "dependencies": {
-    "camuaui": "0.2.3"
+    "cross-spawn": "7.0.6"
   },
   "publishConfig": {
     "access": "public"

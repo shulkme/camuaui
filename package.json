@@ -4,7 +4,8 @@
   "description": "Copy Camua UI React components, themes and optional examples into your own project.",
   "type": "module",
   "bin": {
-    "camuaui": "./bin/camuaui.js"
+    "camuaui": "./bin/camuaui.js",
+    "create-camuaui": "./bin/create-camuaui.js"
   },
   "files": [
     "bin",

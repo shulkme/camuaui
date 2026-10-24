@@ -1,5 +1,7 @@
 # create-camuaui
 
+这是稳定的轻量入口包，不包含框架模板、组件或 CLI 主体，也不绑定主包版本。每次执行会通过 npm 获取 `camuaui@latest`，转交给主包的 `create-camuaui` 命令别名，并原样传递参数和退出状态。主包更新后，此入口无需同步发布。
+
 使用最新的官方脚手架创建 Next.js 或 Vite + React 项目，然后自动安装 Camua UI 组件、主题、UIProvider 和示例首页。
 
 ```sh

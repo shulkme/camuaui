@@ -7,8 +7,8 @@ import { readRegistry, registryRoot, digest } from "../src/registry.js";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const pkg = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
 const creator = JSON.parse(await readFile(path.join(root, "packages/create-camuaui/package.json"), "utf8"));
-if (creator.version !== pkg.version || creator.dependencies.camuaui !== pkg.version)
-  throw new Error("Creator version mismatch; run npm run creator:build.");
+if (creator.dependencies?.camuaui || pkg.bin["create-camuaui"] !== "./bin/create-camuaui.js")
+  throw new Error("The stable launcher must forward to the core alias without pinning its version.");
 const creatorSyntax = spawnSync(process.execPath, ["--check", path.join(root, "packages/create-camuaui/bin/create-camuaui.js")], { stdio: "inherit" });
 if (creatorSyntax.status !== 0) process.exit(creatorSyntax.status ?? 1);
 for (const directory of ["src", "bin", "scripts"]) {

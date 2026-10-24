@@ -42,14 +42,12 @@ function npm(args, cwd = root, capture = false) {
 }
 
 async function publish() {
-  const packages = await Promise.all([".", "packages/create-camuaui"].map(async directory => ({
+  const packages = await Promise.all(["."].map(async directory => ({
     ...JSON.parse(await readFile(path.join(root, directory, "package.json"), "utf8")), directory,
   })));
-  if (packages[0].version !== packages[1].version || packages[1].dependencies.camuaui !== packages[0].version)
-    throw new Error("Package versions must match before release.");
   const plan = releasePlan(packages, await Promise.all(packages.map(pkg => metadata(pkg.name))));
   if (plan.bootstrap) {
-    console.log("::notice::First publish required: publish both packages once, then configure npm Trusted Publishing for shulkme/camuaui, workflow publish.yml, with Allow npm publish enabled. Future new versions publish automatically.");
+    console.log("::notice::First core publish required: publish camuaui once, then configure npm Trusted Publishing for shulkme/camuaui, workflow publish.yml, with Allow npm publish enabled. Future core versions publish automatically.");
     return;
   }
   if (process.env.GITHUB_ACTIONS !== "true") throw new Error("Publishing runs in GitHub Actions after source is pushed. Use npm run release -- patch.");
