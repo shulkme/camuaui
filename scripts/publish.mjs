@@ -70,7 +70,9 @@ export async function verifyPublished(pkg, expected, {
       if (dist?.shasum && dist.tarball) {
         if (expected && dist.shasum !== expected.shasum) throw new Error(`Published checksum mismatch for ${label}`);
         if (expected?.integrity && dist.integrity !== expected.integrity) throw new Error(`Published integrity mismatch for ${label}`);
-        const archive = await request(dist.tarball);
+        const archiveUrl = new URL(dist.tarball);
+        archiveUrl.searchParams.set("verification", `${Date.now()}-${attempt}`);
+        const archive = await request(archiveUrl.href);
         if (archive) {
           const bytes = Buffer.from(await archive.arrayBuffer());
           if (createHash("sha1").update(bytes).digest("hex") !== dist.shasum)

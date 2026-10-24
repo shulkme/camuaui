@@ -47,9 +47,13 @@ test("publication verification tolerates processing delays, network errors and t
   });
   assert.equal(result.version, "0.2.4");
   assert.equal(responses.length, 0);
-  const manifests = urls.filter(url => url !== dist.tarball);
+  const manifests = urls.filter(url => new URL(url).pathname === "/camuaui/0.2.4");
   assert(manifests.every(url => url.startsWith("https://registry.npmjs.org/camuaui/0.2.4?verification=")));
   assert.equal(new Set(manifests).size, manifests.length);
+  const downloads = urls.filter(url => new URL(url).pathname.endsWith(".tgz"));
+  assert.equal(downloads.length, 2);
+  assert(downloads.every(url => url.startsWith(`${dist.tarball}?verification=`)));
+  assert.equal(new Set(downloads).size, downloads.length);
 });
 
 test("verification checks existing releases without requiring another publish", async () => {
