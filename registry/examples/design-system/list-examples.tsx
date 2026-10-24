@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Avatar, AvatarFallback } from "../../components/ui/avatar";
 import { Button } from "../../components/ui/button";
+import { Empty, EmptyHeader, EmptyIcon, EmptyTitle, EmptyDescription, EmptyActions } from "../../components/ui/empty";
+import { PlusIcon } from "../../components/ui/icons";
 import { List, ListItem, ListItemMedia, ListItemMeta, ListItemTitle, ListItemDescription, ListItemActions } from "../../components/ui/list";
 import { Switch } from "../../components/ui/switch";
 import {
@@ -170,7 +172,18 @@ export function ListExamples() {
             </ListItem>
           ))}
           {conversations.length === 0 && (
-            <ListItem className="justify-center py-8 text-tertiary">暂无会话</ListItem>
+            <ListItem hoverable={false} className="p-0">
+              <Empty className="bg-transparent" aria-labelledby="empty-conversations-title">
+                <EmptyHeader>
+                  <EmptyIcon><PlusIcon /></EmptyIcon>
+                  <EmptyTitle id="empty-conversations-title">暂无会话</EmptyTitle>
+                  <EmptyDescription>会话已全部移除，可以恢复示例内容继续体验。</EmptyDescription>
+                </EmptyHeader>
+                <EmptyActions>
+                  <Button onClick={() => { setConversations(initialConversations); setActiveId(null); setResult("已恢复示例会话。"); }}>恢复示例会话</Button>
+                </EmptyActions>
+              </Empty>
+            </ListItem>
           )}
         </List>
         <p role="status" className="text-label text-secondary">

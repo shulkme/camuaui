@@ -230,7 +230,7 @@ export function Example() {
 }
 ```
 
-提供 Button、Select、Combobox、Autocomplete、Switch、Input、InputOTP、InputNumber、Card、Tabs、Segmented、Tooltip、Toast、Slider、Progress、Popover、Menu、ContextMenu、Form、FieldSet、Field、Drawer、Modal、Dialog、PageStack、List、ScrollArea、Checkbox、Radio、CheckboxGroup、RadioGroup、Avatar 和 UIProvider。运行 `npx camuaui@latest list` 查看注册列表。API 和完整组合用法可查看 [组件说明](docs/components.md) 或可选示例源码。
+提供 Button、Select、Combobox、Autocomplete、Switch、Input、InputOTP、InputNumber、Card、Tabs、Segmented、Tooltip、Toast、Slider、Progress、Popover、Menu、ContextMenu、Form、FieldSet、Field、Drawer、Modal、Dialog、PageStack、List、Empty、ScrollArea、Checkbox、Radio、CheckboxGroup、RadioGroup、Avatar 和 UIProvider。运行 `npx camuaui@latest list` 查看注册列表。API 和完整组合用法可查看 [组件说明](docs/components.md) 或可选示例源码。
 
 Modal、Dialog、Drawer 的页脚使用 `ModalFooter` / `DialogFooter` / `DrawerFooter`，其中的按钮默认中号 md（36px），可通过 size 显式覆盖。DrawerContent 的 footer 插槽也自动采用中号按钮默认值。
 

@@ -4,6 +4,7 @@ import { useState, type ReactNode } from "react";
 import { DrawerExamples } from "./drawer-examples";
 import { MenuExamples } from "./menu-examples";
 import { ListExamples } from "./list-examples";
+import { EmptyExamples } from "./empty-examples";
 import { ContextMenuExamples } from "./context-menu-examples";
 import { ComboboxExamples } from "./combobox-examples";
 import { ControlSizeExamples } from "./size-examples";
@@ -622,6 +623,7 @@ export function ComponentExamples() {
         <MenuExamples />
         <ContextMenuExamples />
         <ListExamples />
+        <EmptyExamples />
         <DrawerExamples />
         <Card data-demo="card-avatar">
           <CardHeader>

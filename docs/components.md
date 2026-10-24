@@ -2,7 +2,7 @@
 
 在可选 `DesignSystem` 组件的“组件与交互”区域可体验全部组件。组件按配置输出（默认 `src/components/ui/`），按文件导入；共享主题见 [visual-guidelines.md](visual-guidelines.md)。
 
-请在根内容接入 `UIProvider`，提供 Tooltip、Toast 上下文。Card 不依赖客户端运行时，其余交互组件在各自文件内声明客户端边界。
+请在根内容接入 `UIProvider`，提供 Tooltip、Toast 上下文。Card、Empty 等展示组件不依赖客户端运行时，交互组件在各自文件内声明客户端边界。
 
 表单项默认采用透明底与细边框；未聚焦时悬停边框加深一级（亮色 gray-300，暗色 18% primary），禁用项不响应；聚焦时边框和 2px 焦点环均立即使用 accent-700，且无偏移，不经过深色过渡。所有浮层采用无边框、零偏移四周阴影：Select、Menu 下拉浮层为 8px 圆角、4px 内边距，Popover、Tooltip 为 8px 圆角，大弹层为 24px 圆角与内容内边距。支持 Base UI 进出状态与减少动态效果偏好。
 
@@ -65,6 +65,7 @@ Button 所有尺寸与变体默认使用 font-normal（400）字重。size 仅�
 | ScrollArea / `scroll-area.tsx` | ScrollArea、ScrollAreaRoot、ScrollAreaViewport、ScrollAreaContent、ScrollAreaScrollbar、ScrollAreaThumb、ScrollAreaCorner；纵向/横向/双向滚动、悬停显示滚动条和渐变边缘 |
 | PageStack / `page-stack.tsx` | PageStack、PageStackPage；受控内容切换、双向滑动、动态高度与状态保留 |
 | List / `list.tsx` | List、ListItem、ListItemMedia、ListItemMeta（ListItemContent）、ListItemTitle、ListItemDescription、ListItemActions；头像/Logo、标题与描述、独立操作区 |
+| Empty / `empty.tsx` | Empty、EmptyHeader、EmptyIcon、EmptyTitle、EmptyDescription、EmptyActions、EmptyExtra；无数据时的引导卡片 |
 | Checkbox / `checkbox.tsx`            | Checkbox；支持选中、禁用、部分选中及 CheckboxGroup 的父复选框                                                                                          |
 | Radio / `radio.tsx`                  | Radio；与 RadioGroup 配合使用                                                                                                                          |
 | CheckboxGroup / `checkbox-group.tsx` | CheckboxGroup；以字符串数组管理多个 Checkbox 的 value                                                                                                  |
@@ -571,3 +572,34 @@ import { Button } from "./components/ui/button";
 ```
 
 Media 可放头像、图片、Logo 或图标，Actions 可放按钮或 Menu；两侧不压缩，中间 Meta 自适应剩余宽度，标题与描述默认单行截断。`ListItemContent` 是 `ListItemMeta` 的同名功能别名。所有部件转发 ref、原生属性和 className，可用 `whitespace-normal` 等覆盖默认排版。悬停反馈仅控制外观，不自动添加点击行为；需要进入详情时使用真正的 button 或 a，并让右侧操作独立，避免嵌套交互元素。
+
+## Empty · 空状态
+
+用于列表没有数据、首次使用引导或筛选无结果。默认是居中排版、16px 圆角的内容表面，没有容器边框或阴影。图标位于 48px 的中性浅灰背景内，SVG 默认 24px；背景使用 surface-muted，在暗色主题中自动适配，不增加主题变量。
+
+```tsx
+import {
+  Empty, EmptyHeader, EmptyIcon, EmptyTitle,
+  EmptyDescription, EmptyActions, EmptyExtra,
+} from "./components/ui/empty";
+import { PlusIcon } from "./components/ui/icons";
+import { Button } from "./components/ui/button";
+
+function EmptyProjects({ onCreate }: { onCreate: () => void }) {
+  return (
+    <Empty aria-labelledby="empty-projects-title">
+      <EmptyHeader>
+        <EmptyIcon><PlusIcon /></EmptyIcon>
+        <EmptyTitle id="empty-projects-title">还没有项目</EmptyTitle>
+        <EmptyDescription>创建第一个项目，开始整理内容与任务。</EmptyDescription>
+      </EmptyHeader>
+      <EmptyActions><Button onClick={onCreate}>创建项目</Button></EmptyActions>
+      <EmptyExtra>你可以先创建空白项目，之后再邀请成员。</EmptyExtra>
+    </Empty>
+  );
+}
+```
+
+所有区域按需组合，可省略标题、图标、操作或 extra。EmptyActions 支持多个按钮与窄屏换行；EmptyExtra 是独立的底部扩展区，默认带浅分隔线，可放帮助说明、模板入口或其它自定义内容。各部件转发 ref、原生属性与 className；图标默认仅装饰，信息通过标题和描述表达。不内置按钮行为、请求或路由，显示时机由业务根据数据决定。嵌入已有卡片时可用 `className="bg-background"` 或 `bg-transparent` 调整背景；放入 List 时使用 ListItem 包裹，保持 ul/li 语义。
+
+可选 DesignSystem 的独立 Empty 卡片提供创建项目、展开模板及筛选无结果示例；List 清空所有会话后也使用 Empty，并可恢复示例数据。

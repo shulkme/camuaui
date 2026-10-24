@@ -12,6 +12,8 @@
 
 - List is a semantic ul/li composition with ListItemMedia, ListItemMeta (alias ListItemContent), ListItemTitle, ListItemDescription and ListItemActions. Defaults match the reference: divided=true, hoverable=false, size=md; sm/md/lg adjust row spacing, not Avatar size. Rows can override divided/hoverable. Use divider/background-hover and stable row padding; retain independent keyboard-accessible row entry and action buttons. No automatic li click handlers or nested buttons.
 
+- Empty is a presentation-only composition: Empty, EmptyHeader, EmptyIcon, EmptyTitle, EmptyDescription, EmptyActions and EmptyExtra. Keep a flat 16px surface card, 48px rounded-lg surface-muted icon tile (24px SVG), optional text/actions, and a separate extra area with divider. Use existing theme tokens, React 18/19 refs and className overrides, without loading/routing behavior or new dependencies. Demonstrate onboarding and filtered results; list empty states stay inside semantic ListItem wrappers.
+
 - PageStack is a framework-independent controlled content switcher; PageStackPage values are unique and ordered parent to child. Preserve mounted state, inert/aria-hidden inactive pages, focus transfer only from departing content, initial SSR layout, dynamic height measurement, reversible CSS translate transitions and reduced-motion support. Keep padding inside pages. No menu semantics, routing dependency or global key handlers.
 
 - Use Camua UI as the independent library name. Keep preview copy generic, without Camua product branding or marketing slogans. The Card background demo wrapper uses rounded-lg (8px); Card itself stays rounded-2xl (16px). Tabs use secondary text when inactive and primary text on enabled hover/active; disabled text stays quaternary.
