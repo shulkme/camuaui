@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "version": "0.2.3",
+  "components": [
+    "autocomplete",
+    "avatar",
+    "button",
+    "card",
+    "checkbox-group",
+    "checkbox",
+    "combobox",
+    "context-menu",
+    "dialog",
+    "drawer",
+    "field",
+    "fieldset",
+    "form",
+    "input-number",
+    "input-otp",
+    "input",
+    "list",
+    "menu",
+    "modal",
+    "page-stack",
+    "popover",
+    "progress",
+    "provider",
+    "radio-group",
+    "radio",
+    "scroll-area",
+    "segmented",
+    "select",
+    "slider",
+    "switch",
+    "tabs",
+    "toast",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "components/ui/autocomplete.tsx",
+      "sha256": "16f5099d26cef1179aa6299a35156c2b4c91a5b73cd6990bf160ecd1b3b80f3d"
+    },
+    {
+      "path": "components/ui/avatar.tsx",
+      "sha256": "7dd34814edf23134a661ad502a59718d77cf59fa1dd704f766531e06372da56b"
+    },
+    {
+      "path": "components/ui/button.tsx",
+      "sha256": "c64dcf4ebdd52b98f71ed23fb22f0535a7a383620c919b33b44372c819f7b1dc"
+    },
+    {
+      "path": "components/ui/card.tsx",
+      "sha256": "66e56eada78ebfe2b60be9e3d1068be4dd3dcb910a45fc9a6705f257e5021b93"
+    },
+    {
+      "path": "components/ui/checkbox-group.tsx",
+      "sha256": "66da7c5facb0dbdf1c618af36b579d9be1993b41906802794064e3875372ceea"
+    },
+    {
+      "path": "components/ui/checkbox.tsx",
+      "sha256": "3ee1e252083c3ebe5852140b672c694fbe2ae3b8f00680ae2c5a6c5b4339d9f4"
+    },
+    {
+      "path": "components/ui/combobox.tsx",
+      "sha256": "2a072fbd202bee56838e9cbce099d17e147ec21417551be91ea21e7ce558e26c"
+    },
+    {
+      "path": "components/ui/context-menu.tsx",
+      "sha256": "4082086dd13651a11bf01ab57db699fd607bbacec7a567dbfe7429fca3fd0538"
+    },
+    {
+      "path": "components/ui/dialog.tsx",
+      "sha256": "b7e9a34e1113afa992c8738446bb70bb3428bb9d018ce41bf2bfec4b99e11810"
+    },
+    {
+      "path": "components/ui/drawer.tsx",
+      "sha256": "e4b2e337060e07ab9323b39994ae6489dee98854c226c7f6f525a336b3186496"
+    },
+    {
+      "path": "components/ui/field.tsx",
+      "sha256": "4ad508dadda519d59b131dd645f740f28079c49e29d38eba960ab41b4ed0440a"
+    },
+    {
+      "path": "components/ui/fieldset.tsx",
+      "sha256": "84a4e8104ff4e34594dcce24f248b2182ec1b1b06f5952aa8509a94af9eb9c33"
+    },
+    {
+      "path": "components/ui/form.tsx",
+      "sha256": "9817f3aae7f6c4e3800c4d96dc66492b6c6488b061b6360326d0df7e82213336"
+    },
+    {
+      "path": "components/ui/icons.tsx",
+      "sha256": "3ff075b984f60a15d5db99252491360b08d1baced3c6ead92fd592ab21cf33fe"
+    },
+    {
+      "path": "components/ui/input-number.tsx",
+      "sha256": "c30196ab0b8a13f7eadc25805b506c2b80b0a86a4b3f1350003c753b27e36a77"
+    },
+    {
+      "path": "components/ui/input-otp.tsx",
+      "sha256": "4443071838763a92b5ea5bff64a7729712a053dbb0079c566a5e49bde022521e"
+    },
+    {
+      "path": "components/ui/input.tsx",
+      "sha256": "bda5c3640cc79f708b2b9c21c87c9929e46ff8fcdbf268dd3fbfdd0c2147bf57"
+    },
+    {
+      "path": "components/ui/list.tsx",
+      "sha256": "995d2d1bb155896ce4f7ba730c0816cd4e54586548da9b6b8974769c5cc7a8b0"
+    },
+    {
+      "path": "components/ui/menu.tsx",
+      "sha256": "0da125f59170982954dccb70480d6b01af400675b947c01a19a9aee615076156"
+    },
+    {
+      "path": "components/ui/modal.tsx",
+      "sha256": "02b8e80cac2f93ed5d99a76eb83aa1c5dd7b8ee8537fb0efc0347457c4d3075c"
+    },
+    {
+      "path": "components/ui/page-stack.tsx",
+      "sha256": "3277e9aeca849a6a3da1c1bc5115d7912b630d6566e1bb483aa46e76d728f44e"
+    },
+    {
+      "path": "components/ui/popover.tsx",
+      "sha256": "735f25ee1a314099b8cc32767c0f260022a4229b55f03df136dd258390e1c4a2"
+    },
+    {
+      "path": "components/ui/progress.tsx",
+      "sha256": "52240ffaf2c06c0612276b36db284b3f345324df3d0acabf3daceebf4ebafe05"
+    },
+    {
+      "path": "components/ui/provider.tsx",
+      "sha256": "6659ef5cafd2d53195e5f31394ab89414746f37f3e8d9741be8979dbba9b6a31"
+    },
+    {
+      "path": "components/ui/radio-group.tsx",
+      "sha256": "e8be75cc70c063673385475a8649a491fe2f7df6895424e294009e0c85e93758"
+    },
+    {
+      "path": "components/ui/radio.tsx",
+      "sha256": "d6f43b935439ec9f623a9c889764d8c0a09121602d90177df34537f7cc295bac"
+    },
+    {
+      "path": "components/ui/scroll-area.tsx",
+      "sha256": "833b4b4368f39617197efb3c6b8fac53f8c890a8265e0eb44d5da8c27753315c"
+    },
+    {
+      "path": "components/ui/segmented.tsx",
+      "sha256": "2e7b51be57035506125ca28bd71c8220de2d93ce6c6e4f0f782766a15bd839ed"
+    },
+    {
+      "path": "components/ui/select.tsx",
+      "sha256": "4398216ddbca2eb4c493b988b80bb8a8d4672600747bd91351a3cfd87adaf40b"
+    },
+    {
+      "path": "components/ui/selection-indicator.tsx",
+      "sha256": "cf76abbc692c02813e6a5c4324054be5db9ed8dcf87048db013be4bc8322ff5c"
+    },
+    {
+      "path": "components/ui/slider.tsx",
+      "sha256": "954a1e52e6ed32f989d1593e89f3ab1c0cac4ffe731e4e9d7f8157ddafd28b89"
+    },
+    {
+      "path": "components/ui/styles.ts",
+      "sha256": "eaedb149525da3a7bf7648b4316b579f6861453f9a24a4689c0888c31f105921"
+    },
+    {
+      "path": "components/ui/switch.tsx",
+      "sha256": "dd7d06997738f15f6c69ab9612bc96dc9e740ff2dc9354952f74429993a79672"
+    },
+    {
+      "path": "components/ui/tabs.tsx",
+      "sha256": "4f40074f294d2bd73b1af00e8f42f6e48d241125ea1dee5337df627c403c89bb"
+    },
+    {
+      "path": "components/ui/toast.tsx",
+      "sha256": "a4ec57b8873bd32c1200839ef96e7995e7039f676d16a93eefd8b8d9799f3223"
+    },
+    {
+      "path": "components/ui/tooltip.tsx",
+      "sha256": "dc985fc473faab8f5c95e06e13ed4d7e72afb92b1231bfc725d29ebdfac8644b"
+    },
+    {
+      "path": "examples/design-system/combobox-examples.tsx",
+      "sha256": "a645fb3e0d300181431c0a1e06e25fe6c0aada00fbf80b9b8a689e924deb96c1"
+    },
+    {
+      "path": "examples/design-system/component-examples.tsx",
+      "sha256": "638065e525504c9dd4ef58f209c578bd757998fdb538cb8e10a083eb63e552ad"
+    },
+    {
+      "path": "examples/design-system/context-menu-examples.tsx",
+      "sha256": "933959a117d3d1c22597bc5f4fdbe158d1cf0356732b80f1e00424c0a4c13841"
+    },
+    {
+      "path": "examples/design-system/drawer-examples.tsx",
+      "sha256": "34dad2a347f428a11da60104d2ae5717bf56615883dd0c9abdcce5d1e547d3e0"
+    },
+    {
+      "path": "examples/design-system/examples.tsx",
+      "sha256": "1da27e32139b9cf71e2b6ec9d2a3cf49b3c34faf2b3b56c6b3646b628417063c"
+    },
+    {
+      "path": "examples/design-system/index.tsx",
+      "sha256": "074aec5bbbf684fd0208d68d3e0765deba5b8c367b38933b17db6cd5687dd95d"
+    },
+    {
+      "path": "examples/design-system/input-examples.tsx",
+      "sha256": "c31f3e6ea84c36d7775d3d5a1eea8fc4d686e9d7a5f00b3b422aa3d4d3e8c26b"
+    },
+    {
+      "path": "examples/design-system/list-examples.tsx",
+      "sha256": "d7154b2858c129c1b283f28885982fa700614b85b78d3bfab5ca29c670c2bb98"
+    },
+    {
+      "path": "examples/design-system/menu-examples.tsx",
+      "sha256": "c77893e8187959fb6da321326d52167aa05156966de17caaf75f05d6aca0ee7d"
+    },
+    {
+      "path": "examples/design-system/nested-modal-examples.tsx",
+      "sha256": "dffe39d93f6c7744465df4e9c6c4846777c3967200cfb009295fa858197a19d5"
+    },
+    {
+      "path": "examples/design-system/page-stack-examples.tsx",
+      "sha256": "97cfc5cb37f89d8d0b0759d623b42687cfc0c3d49c8399e45dcc354ce819902b"
+    },
+    {
+      "path": "examples/design-system/scroll-area-examples.tsx",
+      "sha256": "1d537a09c7f67e5bbeea79148d26f81ef9f697f5426a3df2650cfffc36fc83c2"
+    },
+    {
+      "path": "examples/design-system/size-examples.tsx",
+      "sha256": "8db3454ae742404d779211673dcc8584897058e5cd5e993cf4eb65ed3c0295ab"
+    },
+    {
+      "path": "lib/utils.ts",
+      "sha256": "1fe441fc8bbad3110abf076da01aac12deb5fa028f2b3f08ec1f7d28d5345c1b"
+    },
+    {
+      "path": "styles/base.css",
+      "sha256": "8aca61e7ec52b55fae0327021e6c6e60be9304a3ca3399aea46ad6551119b442"
+    },
+    {
+      "path": "styles/index.css",
+      "sha256": "cd022c3c25c0bd4c6bda5ada084aaa82e4dcaba1b665b04967a44f5a85bdf333"
+    },
+    {
+      "path": "styles/overlay-motion.css",
+      "sha256": "8654c374d86668ef6de70d2b424bda1b5672cea150740ca42df77d1ec82ea4ec"
+    },
+    {
+      "path": "styles/theme.css",
+      "sha256": "16e2f9d72f1a4ef15cdb9b7abdced7f6324d6ac409408c50853fcb9103aae290"
+    }
+  ]
+}

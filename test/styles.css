@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "../registry/styles/index.css";
+
+@source "../registry/examples/design-system";

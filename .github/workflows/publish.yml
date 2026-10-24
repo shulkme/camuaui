@@ -1,0 +1,48 @@
+name: Check and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: camuaui-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm ci
+      - run: mkdir -p artifacts
+      - run: npm pack --pack-destination artifacts
+      - run: npm pack ./packages/create-camuaui --pack-destination artifacts
+      - run: npm run preview:build
+      - run: git diff --exit-code
+
+  publish:
+    needs: check
+    if: github.event_name != 'pull_request' && github.repository == 'shulkme/camuaui'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run publish:ci

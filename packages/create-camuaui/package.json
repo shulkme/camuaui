@@ -1,0 +1,36 @@
+{
+  "name": "create-camuaui",
+  "version": "0.2.3",
+  "description": "Create a Next.js or Vite React application with Camua UI, or install into an existing project.",
+  "type": "module",
+  "bin": {
+    "create-camuaui": "./bin/create-camuaui.js"
+  },
+  "files": [
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "dependencies": {
+    "camuaui": "0.2.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepack": "node ../../scripts/build-create.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shulkme/camuaui.git",
+    "directory": "packages/create-camuaui"
+  },
+  "homepage": "https://github.com/shulkme/camuaui#readme",
+  "bugs": {
+    "url": "https://github.com/shulkme/camuaui/issues"
+  }
+}

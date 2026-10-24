@@ -1,0 +1,83 @@
+{
+  "name": "camuaui",
+  "version": "0.2.3",
+  "description": "Copy Camua UI React components, themes and optional examples into your own project.",
+  "type": "module",
+  "bin": {
+    "camuaui": "./bin/camuaui.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "registry",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "vite --config test/vite.config.mjs",
+    "preview:build": "vite build --config test/vite.config.mjs",
+    "preview": "vite preview --config test/vite.config.mjs",
+    "cli": "node bin/camuaui.js",
+    "registry:build": "node scripts/build-registry.mjs",
+    "check": "node scripts/check.mjs && tsc --noEmit",
+    "test": "node --test test/*.test.js",
+    "prepack": "npm run registry:build && npm run creator:build && npm run build && npm run check && npm test",
+    "create": "node bin/create-camuaui.js",
+    "creator:build": "node scripts/build-create.mjs",
+    "build": "node scripts/build.mjs",
+    "pretest": "npm run build",
+    "precli": "npm run build",
+    "precreate": "npm run build",
+    "publish:ci": "node scripts/publish.mjs",
+    "release": "node scripts/release.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "tailwindcss",
+    "base-ui",
+    "cli",
+    "components",
+    "design-system"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cross-spawn": "7.0.6",
+    "picocolors": "1.1.1",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "@base-ui/react": "1.9.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@tanstack/react-virtual": "^3.14.21",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "clsx": "2.1.1",
+    "esbuild": "^0.28.2",
+    "postcss": "8.5.31",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tailwind-merge": "3.7.0",
+    "tailwindcss": "4.3.3",
+    "vite": "^8.3.4"
+  },
+  "exports": {
+    "./create": "./dist/create.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shulkme/camuaui.git"
+  },
+  "homepage": "https://github.com/shulkme/camuaui#readme",
+  "bugs": {
+    "url": "https://github.com/shulkme/camuaui/issues"
+  }
+}

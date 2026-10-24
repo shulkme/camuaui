@@ -1,0 +1,245 @@
+/* Base UI owns gesture state and measurements. Only the state-driven motion
+   needs CSS; colors, shadows, spacing and shapes stay in Tailwind classes. */
+@layer components {
+  .toast-motion {
+    --stack-scale: max(0, calc(1 - var(--toast-index, 0) * 0.06));
+    --stack-height: var(--toast-frontmost-height, var(--toast-height, auto));
+    --stack-y: calc(
+      -1 * var(--toast-offset-y, 0px) - var(--toast-index, 0) * 0.75rem +
+        var(--toast-swipe-movement-y, 0px)
+    );
+    z-index: calc(100 - var(--toast-index, 0));
+    height: var(--stack-height);
+    transform: translateX(var(--toast-swipe-movement-x, 0px))
+      translateY(
+        calc(
+          var(--toast-swipe-movement-y, 0px) - var(--toast-index, 0) * 0.75rem -
+            (1 - var(--stack-scale)) * var(--stack-height)
+        )
+      )
+      scale(var(--stack-scale));
+    transition:
+      transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 250ms,
+      height 150ms;
+  }
+
+  .toast-motion[data-expanded] {
+    height: var(--toast-height, auto);
+    transform: translateX(var(--toast-swipe-movement-x, 0px))
+      translateY(var(--stack-y));
+  }
+
+  .toast-motion[data-starting-style],
+  .toast-motion[data-ending-style] {
+    opacity: 0;
+    transform: translateY(150%);
+  }
+
+  .toast-motion[data-ending-style][data-swipe-direction="left"] {
+    transform: translateX(calc(var(--toast-swipe-movement-x, 0px) - 150%))
+      translateY(var(--stack-y));
+  }
+
+  .toast-motion[data-ending-style][data-swipe-direction="right"] {
+    transform: translateX(calc(var(--toast-swipe-movement-x, 0px) + 150%))
+      translateY(var(--stack-y));
+  }
+
+  .toast-motion[data-ending-style][data-swipe-direction="up"] {
+    transform: translateY(calc(var(--toast-swipe-movement-y, 0px) - 150%));
+  }
+
+  .toast-motion[data-ending-style][data-swipe-direction="down"] {
+    transform: translateY(calc(var(--toast-swipe-movement-y, 0px) + 150%));
+  }
+
+  .toast-motion[data-limited] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Keep hover active while the pointer crosses the expanded stack's gaps. */
+  .toast-motion::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: calc(0.75rem + 1px);
+  }
+
+  .drawer-motion {
+    --drawer-axis-x: 0;
+    --drawer-axis-y: 1;
+    --drawer-stack-scale: 1;
+    --drawer-stack-peek: 0px;
+    --drawer-stack-compensation: 0px;
+    transform-origin: center bottom;
+    transform: translateX(
+        calc(
+          var(--drawer-swipe-movement-x, 0px) - var(--drawer-axis-x) *
+            var(--drawer-stack-peek)
+        )
+      )
+      translateY(
+        calc(
+          var(--drawer-snap-point-offset, 0px) +
+            var(--drawer-swipe-movement-y, 0px) - var(--drawer-axis-y) *
+            (var(--drawer-stack-peek) + var(--drawer-stack-compensation))
+        )
+      )
+      scale(var(--drawer-stack-scale));
+    transition:
+      transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
+      height 450ms cubic-bezier(0.32, 0.72, 0, 1),
+      padding-bottom 450ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .drawer-motion[data-side="top"] {
+    --drawer-axis-y: -1;
+    transform-origin: center top;
+  }
+
+  .drawer-motion[data-side="left"],
+  .drawer-motion[data-side="right"] {
+    --drawer-axis-y: 0;
+    transform-origin: center;
+  }
+
+  .drawer-motion[data-side="left"] {
+    --drawer-axis-x: -1;
+  }
+  .drawer-motion[data-side="right"] {
+    --drawer-axis-x: 1;
+  }
+
+  /* Base UI reports nested depth, frontmost height and live child swipe progress. */
+  .drawer-motion[data-stacked] {
+    --drawer-stack-depth: max(
+      0,
+      calc(
+        var(--nested-drawers, 0) - clamp(0, var(--drawer-swipe-progress, 0), 1)
+      )
+    );
+    --drawer-stack-scale: max(0.8, calc(1 - var(--drawer-stack-depth) * 0.04));
+    --drawer-stack-peek: calc(var(--drawer-stack-depth) * 1rem);
+    --drawer-stack-compensation: calc(
+      (1 - var(--drawer-stack-scale)) *
+        var(--drawer-frontmost-height, var(--drawer-height, 0px))
+    );
+  }
+
+  .drawer-motion[data-stacked][data-nested-drawer-open] {
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .drawer-motion[data-stacked][data-nested-drawer-open]:is(
+      [data-side="top"],
+      [data-side="bottom"]
+    ) {
+    height: var(--drawer-frontmost-height, var(--drawer-height));
+  }
+
+  .drawer-content,
+  .drawer-fixed,
+  [data-drawer-handle] {
+    transition: opacity 250ms;
+  }
+
+  .drawer-motion[data-stacked][data-nested-drawer-open]
+    > :is(.drawer-content, .drawer-fixed, [data-drawer-handle], button) {
+    opacity: 0;
+  }
+
+  .drawer-motion[data-stacked][data-nested-drawer-swiping]
+    > :is(.drawer-content, .drawer-fixed, [data-drawer-handle]) {
+    opacity: 1;
+  }
+
+  /* Reduce the scroll area's height at partial stops so its actions stay reachable. */
+  .drawer-motion[data-snap-points][data-side="bottom"] {
+    padding-bottom: max(
+      0px,
+      calc(
+        var(--drawer-snap-point-offset, 0px) +
+          var(--drawer-swipe-movement-y, 0px)
+      )
+    );
+  }
+
+  .drawer-motion[data-snap-points][data-side="top"] {
+    padding-top: max(
+      0px,
+      calc(
+        -1 *
+          (
+            var(--drawer-snap-point-offset, 0px) +
+              var(--drawer-swipe-movement-y, 0px)
+          )
+      )
+    );
+  }
+
+  .drawer-motion[data-starting-style],
+  .drawer-motion[data-ending-style] {
+    transform: translate(
+      calc(var(--drawer-axis-x) * (100% + 1rem)),
+      calc(var(--drawer-axis-y) * (100% + 1rem))
+    );
+  }
+
+  .drawer-indent-motion {
+    --drawer-indent-resting: calc(
+      1 - clamp(0, var(--drawer-swipe-progress, 0) * 100000, 1)
+    );
+    transform-origin: center top;
+    transition:
+      transform 400ms cubic-bezier(0.32, 0.72, 0, 1),
+      border-radius 250ms;
+    transition-duration:
+      calc(400ms * var(--drawer-indent-resting)),
+      calc(250ms * var(--drawer-indent-resting));
+  }
+
+  .drawer-indent-motion[data-active] {
+    transform: scale(calc(0.96 + 0.04 * var(--drawer-swipe-progress, 0)))
+      translateY(calc(0.5rem * (1 - var(--drawer-swipe-progress, 0))));
+    border-radius: 1.5rem;
+  }
+
+  .drawer-backdrop-motion {
+    opacity: calc(1 - var(--drawer-swipe-progress, 0));
+    transition: opacity 450ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .drawer-backdrop-motion[data-starting-style],
+  .drawer-backdrop-motion[data-ending-style] {
+    opacity: 0;
+  }
+
+  .drawer-motion[data-ending-style],
+  .drawer-backdrop-motion[data-ending-style] {
+    transition-duration: calc(var(--drawer-swipe-strength, 1) * 400ms);
+  }
+
+  .toast-motion[data-swiping],
+  .drawer-motion[data-swiping],
+  .drawer-motion[data-nested-drawer-swiping],
+  .drawer-backdrop-motion[data-swiping] {
+    transition-duration: 0ms;
+    user-select: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toast-motion,
+    .drawer-motion,
+    .drawer-backdrop-motion,
+    .drawer-indent-motion,
+    .drawer-content,
+    .drawer-fixed,
+    [data-drawer-handle] {
+      transition: none;
+    }
+  }
+}
