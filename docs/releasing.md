@@ -29,6 +29,8 @@ npm run release -- patch
 
 脚本只更新主包版本和 registry，检查并打包，提交版本变更，然后推送 main。推送失败时不会执行 npm 发布。GitHub Actions 在已推送的提交上检查并发布主包；安装包不提交 Git。相同版本会跳过，失败后可以重新运行 Actions。入口包的版本与主包相互独立。
 
+npm 接收发布后可能仍需几分钟处理。工作流会查询具体版本、绕过元数据缓存，并在最多五分钟内重试可恢复的网络或 registry 错误；随后核对元数据和实际下载包的摘要。校验超时表示发布状态待确认，不代表 npm 拒绝发布。重新运行工作流时，已存在的版本只校验、不重复发布，无需因此增加版本号。
+
 自动流程当前发布稳定的 x.y.z 版本。已经发布的版本不可覆盖；源码变更需要发布时，请增加版本号。`dist/` 是构建生成的 CLI，`registry/` 是需要注入项目的组件源码；`src/` 只进入 Git，不进入 npm 包。
 
 参考：[npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers/)。
